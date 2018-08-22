@@ -1,4 +1,5 @@
 class BarrelsController < ApplicationController
+  before_action :set_satellite
   before_action :set_barrel, only: [:show, :edit, :update, :destroy]
 
   # GET /barrels
@@ -24,12 +25,12 @@ class BarrelsController < ApplicationController
   # POST /barrels
   # POST /barrels.json
   def create
-    @barrel = Barrel.new(barrel_params)
+    @barrel = @satellite.barrels.new(barrel_params)
 
     respond_to do |format|
       if @barrel.save
-        format.html { redirect_to @barrel, notice: 'Barrel was successfully created.' }
-        format.json { render :show, status: :created, location: @barrel }
+        format.html { redirect_to @satellite, notice: 'Barrel was successfully created.' }
+        format.json { render :show, status: :created, location: @satellite }
       else
         format.html { render :new }
         format.json { render json: @barrel.errors, status: :unprocessable_entity }
@@ -63,6 +64,10 @@ class BarrelsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_satellite
+      @satellite = Satellite.find(params[:satellite_id])
+    end
+
     def set_barrel
       @barrel = Barrel.find(params[:id])
     end

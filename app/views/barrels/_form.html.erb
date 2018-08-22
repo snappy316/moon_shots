@@ -1,4 +1,4 @@
-<%= form_with(model: barrel, local: true) do |form| %>
+<%= form_with(model: [satellite, barrel], local: true) do |form| %>
   <% if barrel.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(barrel.errors.count, "error") %> prohibited this barrel from being saved:</h2>
@@ -24,11 +24,6 @@
   <div class="field">
     <%= form.label :barrel_errors %>
     <%= form.text_field :barrel_errors %>
-  </div>
-
-  <div class="field">
-    <%= form.label :satellite_id %>
-    <%= form.text_field :satellite_id %>
   </div>
 
   <div class="actions">

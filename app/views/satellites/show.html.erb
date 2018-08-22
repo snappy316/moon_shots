@@ -7,6 +7,19 @@
   <%= @satellite.last_telemetry_timestamp %>
 </p>
 
+<p>
+  <strong>Barrels:</strong>
+  <ul>
+    <% @satellite.barrels.each do |barrel| %>
+      <li><%= barrel.inspect %></li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
+  <%= link_to 'New Barrel', new_satellite_barrel_path(@satellite) %>
+</p>
+
 <hr>
 
 <%= link_to 'Edit', edit_satellite_path(@satellite) %> |

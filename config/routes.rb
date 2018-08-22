@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :barrels
-  resources :satellites
+  resources :satellites do
+    resources :barrels
+  end
   post '/satellites', to: 'satellites#create', as: :create_satellite
 
   get '/parser', to: 'pages#parser'

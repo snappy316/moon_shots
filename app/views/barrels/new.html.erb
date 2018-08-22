@@ -1,5 +1,5 @@
 <h1>New Barrel</h1>
 
-<%= render 'form', barrel: @barrel %>
+<%= render 'form', barrel: @barrel, satellite: @satellite %>
 
-<%= link_to 'Back', barrels_path %>
+<%= link_to 'Back', satellite_path(@satellite) %>
