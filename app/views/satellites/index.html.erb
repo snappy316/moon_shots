@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Last telemetry timestamp</th>
       <th colspan="3"></th>
     </tr>
@@ -13,6 +14,7 @@
   <tbody>
     <% @satellites.each do |satellite| %>
       <tr>
+        <td><%= satellite.id %></td>
         <td><%= satellite.last_telemetry_timestamp %></td>
         <td><%= link_to 'Show', satellite %></td>
         <td><%= link_to 'Edit', edit_satellite_path(satellite) %></td>
@@ -24,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Satellite', new_satellite_path %>
+<%= link_to 'New Satellite', create_satellite_path(last_telemetry_timestamp: nil), method: :post %>

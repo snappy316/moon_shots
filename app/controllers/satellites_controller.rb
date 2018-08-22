@@ -24,12 +24,12 @@ class SatellitesController < ApplicationController
   # POST /satellites
   # POST /satellites.json
   def create
-    @satellite = Satellite.new(satellite_params)
+    @satellite = Satellite.new
 
     respond_to do |format|
       if @satellite.save
-        format.html { redirect_to @satellite, notice: 'Satellite was successfully created.' }
-        format.json { render :show, status: :created, location: @satellite }
+        format.html { redirect_to satellites_path, notice: 'Satellite was successfully created.' }
+        format.json { render :show, status: :created, location: satellites_path }
       else
         format.html { render :new }
         format.json { render json: @satellite.errors, status: :unprocessable_entity }
