@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  post '/satellites', to: 'satellites#create', as: :create_satellite
+  patch '/satellites/parse', to: 'satellites#parse', as: :satellite_parse
+
   resources :satellites do
     resources :barrels
   end
-  post '/satellites', to: 'satellites#create', as: :create_satellite
 
   get '/parser', to: 'pages#parser'
 

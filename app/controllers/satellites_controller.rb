@@ -51,6 +51,32 @@ class SatellitesController < ApplicationController
     end
   end
 
+  # PATCH/PUT /satellites/parse
+  # PATCH/PUT /satellites/parse.json
+  def parse
+    downlink_body = ActiveSupport::JSON.decode(params[:downlink_body])
+    satellite = Satellite.find(downlink_body['satellite_id'])
+    timestamp = DateTime.strptime(downlink_body['telemetry_timestamp'].to_s,'%s')
+
+    redirect_to parser_path, error: "ERROR: Can't find a satellite with ID #{downlink_body['satellite_id']}" unless satellite
+    redirect_to parser_path, error: "ERROR: Invalid timestamp" unless timestamp
+
+    downlink_body['barrels'].each do |barrel|
+      b = satellite.barrels.find(barrel['batch_id'])
+
+      redirect_to parser_path, error: "ERROR: Can't find a barrel with ID #{barrel['batch_id']} on satellite #{downlink_body['satellite_id']}" unless b
+
+      b.last_flavor_sensor_result = barrel['last_flavor_sensor_result']
+      b.status = barrel['status']
+      b.barrel_errors = barrel['errors']
+      b.save!
+    end
+
+    satellite.update_attributes!(last_telemetry_timestamp: timestamp)
+
+    redirect_to parser_path, notice: 'Parsed successfully'
+  end
+
   # DELETE /satellites/1
   # DELETE /satellites/1.json
   def destroy

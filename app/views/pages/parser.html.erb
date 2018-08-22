@@ -1,1 +1,12 @@
+<p id="notice"><%= notice %></p>
+
 <h1>Parser</h1>
+
+<%= form_tag satellite_parse_path, method: :patch do |form| %>
+  <p>
+    <%= text_area_tag(:downlink_body, "{\n\s\s\n}", size: "50x50") %>
+  </p>
+  <p>
+    <%= submit_tag 'Parse' %>
+  </p>
+<% end %>
