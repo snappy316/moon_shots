@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Last telemetry timestamp:</strong>
+  <%= @satellite.last_telemetry_timestamp %>
+</p>
+
+<%= link_to 'Edit', edit_satellite_path(@satellite) %> |
+<%= link_to 'Back', satellites_path %>

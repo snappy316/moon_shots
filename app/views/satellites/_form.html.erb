@@ -1,0 +1,22 @@
+<%= form_with(model: satellite, local: true) do |form| %>
+  <% if satellite.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(satellite.errors.count, "error") %> prohibited this satellite from being saved:</h2>
+
+      <ul>
+      <% satellite.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :last_telemetry_timestamp %>
+    <%= form.datetime_select :last_telemetry_timestamp %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
