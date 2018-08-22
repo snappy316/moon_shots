@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Last flavor sensor result:</strong>
+  <%= @barrel.last_flavor_sensor_result %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @barrel.status %>
+</p>
+
+<p>
+  <strong>Barrel errors:</strong>
+  <%= @barrel.barrel_errors %>
+</p>
+
+<p>
+  <strong>Satellite:</strong>
+  <%= @barrel.satellite %>
+</p>
+
+<%= link_to 'Edit', edit_barrel_path(@barrel) %> |
+<%= link_to 'Back', barrels_path %>

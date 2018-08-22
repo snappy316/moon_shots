@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Barrels</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Last flavor sensor result</th>
+      <th>Status</th>
+      <th>Barrel errors</th>
+      <th>Satellite</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @barrels.each do |barrel| %>
+      <tr>
+        <td><%= barrel.last_flavor_sensor_result %></td>
+        <td><%= barrel.status %></td>
+        <td><%= barrel.barrel_errors %></td>
+        <td><%= barrel.satellite %></td>
+        <td><%= link_to 'Show', barrel %></td>
+        <td><%= link_to 'Edit', edit_barrel_path(barrel) %></td>
+        <td><%= link_to 'Destroy', barrel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Barrel', new_barrel_path %>

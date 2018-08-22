@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  last_flavor_sensor_result: MyString
+  status: MyString
+  barrel_errors: MyString
+  satellite: one
+
+two:
+  last_flavor_sensor_result: MyString
+  status: MyString
+  barrel_errors: MyString
+  satellite: two
