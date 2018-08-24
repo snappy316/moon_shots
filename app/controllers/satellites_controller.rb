@@ -5,11 +5,13 @@ class SatellitesController < ApplicationController
   # GET /satellites.json
   def index
     @satellites = Satellite.all
+    @sat_json = Satellite.includes(:barrels).map { |sat| sat.as_json.merge({barrels: sat.barrels.as_json}) }
   end
 
   # GET /satellites/1
   # GET /satellites/1.json
   def show
+    @barrels = @satellite.barrels
   end
 
   # GET /satellites/new

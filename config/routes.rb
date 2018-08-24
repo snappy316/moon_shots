@@ -8,6 +8,6 @@ Rails.application.routes.draw do
 
   get '/parser', to: 'pages#parser'
 
-  root to: 'pages#home'
+  root to: 'satellites#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

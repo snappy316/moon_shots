@@ -1,26 +1,2 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Satellite <%= @satellite.id %></h1>
-
-<p>
-  <strong>Last telemetry timestamp:</strong>
-  <%= @satellite.last_telemetry_timestamp %>
-</p>
-
-<p>
-  <strong>Barrels:</strong>
-  <ul>
-    <% @satellite.barrels.each do |barrel| %>
-      <li><%= barrel.inspect %></li>
-    <% end %>
-  </ul>
-</p>
-
-<p>
-  <%= link_to 'New Barrel', new_satellite_barrel_path(@satellite) %>
-</p>
-
-<hr>
-
-<%= link_to 'Edit', edit_satellite_path(@satellite) %> |
-<%= link_to 'Back', satellites_path %>
+<%= react_component("Satellite", { satellite: @satellite, barrels: @barrels }) %>
